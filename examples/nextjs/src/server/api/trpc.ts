@@ -11,7 +11,7 @@ import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import type { NextRoutesMeta } from "../../../../../packages/generate/dist/adapters/next";
+import type { NextRoutesMeta } from "@trpc-routes/generate/adapters/next";
 
 /**
  * 1. CONTEXT

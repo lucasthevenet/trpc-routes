@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import {
   createTRPCProxyClient,
   loggerLink,
-  unstable_httpBatchStreamLink,
+  httpLink,
 } from "@trpc/client";
 
 import type { AppRouter } from "~/server/api/root";
@@ -16,7 +16,7 @@ export const api = createTRPCProxyClient<AppRouter>({
         process.env.NODE_ENV === "development" ||
         (op.direction === "down" && op.result instanceof Error),
     }),
-    unstable_httpBatchStreamLink({
+    httpLink({
       url: getUrl(),
       headers() {
         return {
