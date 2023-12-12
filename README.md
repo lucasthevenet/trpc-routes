@@ -151,3 +151,7 @@ export { handler as GET, handler as POST };
 ## License
 
 Distributed under the MIT License. See LICENSE for more information.
+
+## Mentions
+
+Built with [create-t3-turbo](https://github.com/t3-oss/create-t3-turbo) starter project

@@ -42,7 +42,7 @@ const babelPlugin = declare<{
           trackProgram(path, state as State);
           path.traverse({
             CallExpression(path, state) {
-              if (path.node.callee.type === "Identifier") {
+              if (t.isIdentifier(path.node.callee)) {
                 if (path.node.callee.name === "treeshake$") {
                   transformTreeshake$(path, state as State);
                 }
