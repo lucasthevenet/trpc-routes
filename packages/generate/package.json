@@ -1,6 +1,6 @@
 {
   "name": "@trpc-routes/generate",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "license": "MIT",
   "description": "CLI to generate handler routes for trpc routers automatically",

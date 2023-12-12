@@ -1,6 +1,6 @@
 {
   "name": "@trpc-routes/treeshake",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "license": "MIT",
   "description": "Compiler plugin for tree-shaking trpc routers",
