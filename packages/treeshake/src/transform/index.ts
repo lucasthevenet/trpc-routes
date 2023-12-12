@@ -34,6 +34,15 @@ const babelPlugin = declare<{
 
   const { filters } = options;
 
+  const filterRecord = filters.reduce((acc, filter) => {
+    if(acc[filter.path]) {
+      acc[filter.path] = [];
+    }
+    acc[filter.path]!.push(filter.export);
+
+    return acc;
+  }, {} as Record<string, string[]>);
+
   const plugin: PluginObj = {
     name: "trpc-shake",
     visitor: {
@@ -55,9 +64,7 @@ const babelPlugin = declare<{
 
               // how to check if its export default?
               if (path.isExportDefaultDeclaration()) {
-                const routerPaths = filters
-                  .filter((f) => f.export === "default")
-                  .map((f) => f.path);
+                const routerPaths = filterRecord.default ?? [];
 
                 if (routerPaths.length === 0) return;
 
@@ -84,9 +91,7 @@ const babelPlugin = declare<{
                   "id",
                 ) as babel.NodePath<t.Identifier>;
 
-                const routerPaths = filters
-                  .filter((f) => f.export === name.node.name)
-                  .map((f) => f.path);
+                const routerPaths = filterRecord[name.node.name] ?? [];
 
                 if (routerPaths.length === 0) return;
 
