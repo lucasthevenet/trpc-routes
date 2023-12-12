@@ -1,9 +1,5 @@
 import { cookies } from "next/headers";
-import {
-  createTRPCProxyClient,
-  loggerLink,
-  httpLink,
-} from "@trpc/client";
+import { createTRPCProxyClient, httpLink, loggerLink } from "@trpc/client";
 
 import type { AppRouter } from "~/server/api/root";
 import { getUrl, transformer } from "./shared";

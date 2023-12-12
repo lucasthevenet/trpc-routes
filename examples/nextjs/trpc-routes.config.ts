@@ -1,7 +1,7 @@
 import { createNextRoutesConfig } from "@trpc-routes/generate/adapters/next";
 
-import { createTRPCContext } from "~/server/api/trpc";
 import { appRouter } from "~/server/api/root";
+import { createTRPCContext } from "~/server/api/trpc";
 
 const config = createNextRoutesConfig({
   router: appRouter,
