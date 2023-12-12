@@ -1,4 +1,4 @@
-import { createNextRoutesConfig } from "../../packages/generate/dist/adapters/next";
+import { createNextRoutesConfig } from "@trpc-routes/generate/adapters/next";
 
 import { createTRPCContext } from "~/server/api/trpc";
 import { appRouter } from "./src/server/api/root";

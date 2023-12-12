@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-import { treeshake$ } from "../../../../../../../../packages/treeshake/dist/runtime";
+import { treeshake$ } from "@trpc-routes/treeshake/runtime";
 
 import { createTRPCContext } from "~/server/api/trpc";
 import { appRouter } from "../../../../../server/api/root";

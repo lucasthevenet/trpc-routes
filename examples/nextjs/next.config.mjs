@@ -1,4 +1,4 @@
-import { next } from "../../packages/treeshake/dist/next";
+import { next } from "@trpc-routes/treeshake/next";
 
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
