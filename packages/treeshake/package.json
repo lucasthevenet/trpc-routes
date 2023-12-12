@@ -18,6 +18,31 @@
       "import": "./dist/next.js",
       "default": "./dist/next.cjs"
     },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js",
+      "default": "./dist/vite.cjs"
+    },
+    "./rollup": {
+      "types": "./dist/rollup.d.ts",
+      "import": "./dist/rollup.js",
+      "default": "./dist/rollup.cjs"
+    },
+    "./webpack": {
+      "types": "./dist/webpack.d.ts",
+      "import": "./dist/webpack.js",
+      "default": "./dist/webpack.cjs"
+    },
+    "./rspack": {
+      "types": "./dist/rspack.d.ts",
+      "import": "./dist/rspack.js",
+      "default": "./dist/rspack.cjs"
+    },
+    "./esbuild": {
+      "types": "./dist/esbuild.d.ts",
+      "import": "./dist/esbuild.js",
+      "default": "./dist/esbuild.cjs"
+    },
     "./runtime": {
       "types": "./dist/runtime.d.ts",
       "import": "./dist/runtime.js",
@@ -29,6 +54,21 @@
     "*": {
       "next": [
         "dist/next.d.ts"
+      ],
+      "vite": [
+        "dist/vite.d.ts"
+      ],
+      "rollup": [
+        "dist/rollup.d.ts"
+      ],
+      "webpack": [
+        "dist/webpack.d.ts"
+      ],
+      "rspack": [
+        "dist/rspack.d.ts"
+      ],
+      "esbuild": [
+        "dist/esbuild.d.ts"
       ],
       "runtime": [
         "dist/runtime.d.ts"
