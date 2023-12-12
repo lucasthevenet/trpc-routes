@@ -1,11 +1,15 @@
 {
   "name": "@trpc-routes/generate",
-  "type": "module",
   "version": "0.1.0",
-  "bin": {
-    "trpc-routes": "./dist/bin.js"
-  },
+  "type": "module",
   "license": "MIT",
+  "description": "CLI to generate handler routes for trpc routers automatically",
+  "bin": {
+    "trpc-routes": "dist/bin.js"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "exports": {
     "./package.json": "./package.json",
@@ -18,13 +22,12 @@
       "types": "./dist/adapters/next/index.d.ts",
       "import": "./dist/adapters/next/index.js",
       "require": "./dist/adapters/next/index.cjs"
-    },
-    "./*": "./*"
-  },
+    }
+  },  
   "typesVersions": {
     "*": {
-      "*": [
-        "src/*"
+      "adapters/next": [
+        "./dist/adapters/next/index.d.ts"
       ]
     }
   },
@@ -32,6 +35,11 @@
     "dist",
     "package.json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasthevenet/trpc-routes.git",
+    "directory": "packages/generate"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest",

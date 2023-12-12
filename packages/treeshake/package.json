@@ -1,42 +1,50 @@
 {
   "name": "@trpc-routes/treeshake",
   "version": "0.1.0",
-  "description": "Compiler plugin for tree-shaking trpc routers",
-  "license": "MIT",
-  "sideEffects": false,
   "type": "module",
+  "license": "MIT",
+  "description": "Compiler plugin for tree-shaking trpc routers",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
     },
     "./next": {
       "types": "./dist/next.d.ts",
       "import": "./dist/next.js",
-      "require": "./dist/next.cjs"
+      "default": "./dist/next.cjs"
     },
     "./runtime": {
       "types": "./dist/runtime.d.ts",
       "import": "./dist/runtime.js",
-      "require": "./dist/runtime.cjs"
-    },
-    "./*": "./*"
+      "default": "./dist/runtime.cjs"
+    }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "sideEffects": false,
   "typesVersions": {
     "*": {
-      "*": [
-        "src/*"
+      "next": [
+        "dist/next.d.ts"
+      ],
+      "runtime": [
+        "dist/runtime.d.ts"
       ]
     }
   },
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "package.json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasthevenet/trpc-routes.git",
+    "directory": "packages/treeshake"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest",
