@@ -29,5 +29,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       
       - name: Publish
-        run: pnpm publish --tag latest --filter "./packages/**" --access=public
+        run: pnpm publish --no-git-checks --tag latest --filter "./packages/**" --access=public
       
