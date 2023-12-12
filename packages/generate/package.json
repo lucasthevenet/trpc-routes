@@ -23,7 +23,7 @@
       "import": "./dist/adapters/next/index.js",
       "require": "./dist/adapters/next/index.cjs"
     }
-  },  
+  },
   "typesVersions": {
     "*": {
       "adapters/next": [

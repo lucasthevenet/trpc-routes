@@ -18,7 +18,8 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "test": "turbo test --continue -- --run",
     "test:watch": "turbo test --continue -- --watch",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "prepublishOnly": "pnpm build"
   },
   "prettier": "@trpc-routes/prettier-config",
   "devDependencies": {
