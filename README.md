@@ -7,6 +7,12 @@
   <hr />
 </div>
 
+## **TODO**
+
+- [ ] Improve router traversing
+- [ ] Test on other platforms (vite, rollup)
+- [ ] Investigate wheter it's posible to have "virtual routes" on nextjs to not have to generate route files
+
 ## **Route treeshaking and generation support for [tRPC](https://trpc.io/)**
 
 - Allows you to treeshake your routers and remove unused procedures.
