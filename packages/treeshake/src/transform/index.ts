@@ -34,14 +34,17 @@ const babelPlugin = declare<{
 
   const { filters } = options;
 
-  const filterRecord = filters.reduce((acc, filter) => {
-    if(acc[filter.path]) {
-      acc[filter.path] = [];
-    }
-    acc[filter.path]!.push(filter.export);
+  const filterRecord = filters.reduce(
+    (acc, filter) => {
+      if (acc[filter.path]) {
+        acc[filter.path] = [];
+      }
+      acc[filter.path]!.push(filter.export);
 
-    return acc;
-  }, {} as Record<string, string[]>);
+      return acc;
+    },
+    {} as Record<string, string[]>,
+  );
 
   const plugin: PluginObj = {
     name: "trpc-shake",
