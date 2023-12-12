@@ -12,10 +12,17 @@ function hasSrcFolder(cwd: string) {
 async function generateProcedure(params: {
   procedurePath: string;
   configPath: string;
+  endpoint: string;
   cwd?: string;
   procedure: NextRoutesProcedure;
 }) {
-  const { procedurePath, procedure, configPath, cwd = process.cwd() } = params;
+  const {
+    procedurePath,
+    procedure,
+    configPath,
+    endpoint,
+    cwd = process.cwd(),
+  } = params;
 
   const configSource = await fs.promises.readFile(configPath, "utf-8");
 
@@ -29,8 +36,7 @@ async function generateProcedure(params: {
   const filename = path.join(
     appDir,
     "(generated)",
-    "api",
-    "trpc",
+    endpoint,
     procedurePath,
     "route.ts",
   );
@@ -64,9 +70,10 @@ export const buildGenerator = <TRouter extends AnyRouter>(
       )) {
         const result = await generateProcedure({
           procedurePath,
+          procedure,
+          endpoint: opts.endpoint,
           configPath: params.configPath,
           cwd: params.cwd,
-          procedure,
         });
         files.push(result);
       }
