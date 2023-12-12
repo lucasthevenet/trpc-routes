@@ -1,6 +1,5 @@
 import type { AnyRouter } from "@trpc/server";
 import { loadConfig } from "c12";
-import { transform } from "sucrase";
 
 import type { NextRoutesResolvedConfig } from "../adapters/next/config";
 import { getPathAliasesFromTSConfig } from "../utils/get-paths-alias";
@@ -20,11 +19,6 @@ export const retrieveConfig = async (opts: ResolveConfigOptions) => {
     configFile,
     jitiOptions: {
       alias: alias,
-      transform: (opts) => {
-        return transform(opts.source, {
-          transforms: ["typescript", "imports"],
-        });
-      },
       esmResolve: true,
     },
   });
