@@ -18,14 +18,14 @@
       "outputMode": "new-only"
     },
     "lint": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^build"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
     "test": {
       "outputs": ["node_modules/.vitest/results.json"]
     },
     "typecheck": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^build"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
     "clean": {
