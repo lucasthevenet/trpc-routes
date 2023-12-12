@@ -1,0 +1,37 @@
+{
+  "name": "@trpc-routes/tailwind-config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "license": "MIT",
+  "files": [
+    "index.ts",
+    "postcss.js"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6"
+  },
+  "devDependencies": {
+    "@trpc-routes/eslint-config": "0.1.0",
+    "@trpc-routes/prettier-config": "0.1.0",
+    "@trpc-routes/tsconfig": "0.1.0",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@trpc-routes/eslint-config/base"
+    ]
+  },
+  "prettier": "@trpc-routes/prettier-config"
+}

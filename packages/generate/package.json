@@ -1,0 +1,74 @@
+{
+  "name": "@trpc-routes/generate",
+  "type": "module",
+  "version": "0.1.0",
+  "bin": {
+    "trpc-routes": "./dist/bin.js"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./adapters/next": {
+      "types": "./dist/adapters/next/index.d.ts",
+      "import": "./dist/adapters/next/index.js",
+      "require": "./dist/adapters/next/index.cjs"
+    },
+    "./*": "./*"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "src/*"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "clean": "rm -rf dist .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@babel/core": "^7.23.5",
+    "@babel/generator": "7.23.5",
+    "@babel/plugin-syntax-typescript": "7.23.3",
+    "@babel/template": "7.22.15",
+    "@babel/types": "7.23.5",
+    "cac": "^6.7.14",
+    "c12": "^1.5.1",
+    "hookable": "^5.5.3",
+    "consola": "3.2.3",
+    "tsconfck": "^3.0.0"
+  },
+  "devDependencies": {
+    "@trpc-routes/eslint-config": "0.1.0",
+    "@trpc-routes/prettier-config": "0.1.0",
+    "@trpc-routes/tsconfig": "0.1.0",
+    "@types/babel-types": "^7.0.11",
+    "@types/babel__core": "^7.20.0",
+    "@types/babel__generator": "^7.6.7",
+    "@types/babel__helper-plugin-utils": "^7.10.0",
+    "@trpc/server": "^10.44.1",
+    "eslint": "^8.55.0",
+    "tsup": "7.2.0",
+    "typescript": "^5.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@trpc-routes/eslint-config/base"
+    ]
+  },
+  "prettier": "@trpc-routes/prettier-config"
+}
