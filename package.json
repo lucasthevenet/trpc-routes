@@ -19,6 +19,7 @@
     "test": "turbo test --continue -- --run",
     "test:watch": "turbo test --continue -- --watch",
     "typecheck": "turbo typecheck",
+    "release": "bumpp --recursive --commit --push --tag",
     "prepublishOnly": "pnpm build"
   },
   "prettier": "@trpc-routes/prettier-config",
@@ -26,6 +27,7 @@
     "@manypkg/cli": "^0.21.1",
     "@trpc-routes/prettier-config": "^0.1.0",
     "@turbo/gen": "^1.10.16",
+    "bumpp": "^9.2.0",
     "prettier": "^3.1.0",
     "turbo": "^1.10.16",
     "typescript": "^5.3.2",
