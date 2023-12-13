@@ -1,10 +1,8 @@
-/* eslint-disable */
-
 import type { PluginPass } from "@babel/core";
 import * as t from "@babel/types";
 
 export interface State extends PluginPass {
-  refs: Set<any>;
+  refs: Set<unknown>;
 }
 
 export function trackProgram(path: babel.NodePath, state: State) {
@@ -29,7 +27,7 @@ export function trackProgram(path: babel.NodePath, state: State) {
                 ? "value"
                 : p.node.type === "RestElement"
                   ? "argument"
-                  : (function () {
+                  : (() => {
                       throw new Error("invariant");
                     })(),
             ) as babel.NodePath<babel.types.Node>;
@@ -82,7 +80,7 @@ export function treeShake(path: babel.NodePath, state: State) {
 
   function sweepFunction(sweepPath: babel.NodePath<t.Function>) {
     const ident = getIdentifier(sweepPath) as babel.NodePath<t.Identifier>;
-    if (ident && ident.node && shouldRemove(ident)) {
+    if (ident?.node && shouldRemove(ident)) {
       ++count;
       if (
         t.isAssignmentExpression(sweepPath.parentPath as t.Node) ||
@@ -128,7 +126,7 @@ export function treeShake(path: babel.NodePath, state: State) {
                 ? "value"
                 : p.node.type === "RestElement"
                   ? "argument"
-                  : (function () {
+                  : (() => {
                       throw new Error("invariant");
                     })(),
             ) as babel.NodePath;
@@ -148,7 +146,7 @@ export function treeShake(path: babel.NodePath, state: State) {
           const pattern = variablePath.get("id");
           const beforeCount = count;
           const elements = pattern.get("elements") as babel.NodePath[];
-          elements.forEach((e) => {
+          for (const e of elements) {
             let local: babel.NodePath;
 
             if (e.node && e.node.type === "Identifier") {
@@ -162,7 +160,7 @@ export function treeShake(path: babel.NodePath, state: State) {
               ++count;
               e.remove();
             }
-          });
+          }
           if (
             beforeCount !== count &&
             (pattern.get("elements") as babel.NodePath[]).length < 1
@@ -182,28 +180,31 @@ export function treeShake(path: babel.NodePath, state: State) {
 }
 
 function getIdentifier(path: babel.NodePath) {
-  const parentPath = path.parentPath;
-  if (parentPath?.type === "VariableDeclarator") {
+  const parentPath = path.parentPath!;
+  if (t.isVariableDeclarator(parentPath.node)) {
     const pp = parentPath;
     const name = pp.get("id") as babel.NodePath;
     return name.node.type === "Identifier" ? name : null;
   }
-  if (parentPath?.type === "AssignmentExpression") {
+  if (t.isAssignmentExpression(parentPath.node)) {
     const pp = parentPath;
     const name = pp.get("left") as babel.NodePath;
     return name.node.type === "Identifier" ? name : null;
   }
-  if (path.node.type === "ArrowFunctionExpression") {
+  if (t.isArrowFunctionExpression(path.node)) {
     return null;
   }
 
-  const node = path.node as any;
+  if ("id" in path.node && t.isIdentifier(path.node.id)) {
+    return path.get("id");
+  }
 
-  return node.id && node.id.type === "Identifier" ? path.get("id") : null;
+  return null;
 }
 
-function isIdentifierReferenced(ident: babel.NodePath<any>) {
-  const b = ident.scope.getBinding(ident.node.name);
+function isIdentifierReferenced(ident: babel.NodePath<t.Node>) {
+  if (!("name" in ident.node)) return false;
+  const b = ident.scope.getBinding(ident.node.name as string);
   if (b && b.referenced) {
     if (b.path.type === "FunctionDeclaration") {
       return !b.constantViolations

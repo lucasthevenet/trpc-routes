@@ -30,7 +30,6 @@
     "@trpc-routes/eslint-config": "workspace:^0.1.0",
     "@trpc-routes/generate": "workspace:^0.1.4",
     "@trpc-routes/prettier-config": "workspace:^0.1.0",
-    "@trpc-routes/tailwind-config": "workspace:^0.1.0",
     "@trpc-routes/treeshake": "workspace:^0.1.4",
     "@trpc-routes/tsconfig": "workspace:^0.1.0",
     "@types/eslint": "^8.44.8",
